@@ -11,7 +11,7 @@ fd_set read_fds, write_fds, all_fds;
 int count = 0, max_fd;
 int ids[1000];
 char* msgs[1000];
-char buf_read[1001], buf_write[1001];
+char buf_read[1000001], buf_write[1000001];
 
 void error()
 {
@@ -131,7 +131,7 @@ int main(int argc, char **argv) {
 				}
 				else //existing client
 				{
-					int bytes_read = recv(fd, buf_read, 1000, 0);
+					int bytes_read = recv(fd, buf_read, 1000000, 0);
 					if (bytes_read <= 0) //disconnect
 					{
 						FD_CLR(fd, &all_fds);
